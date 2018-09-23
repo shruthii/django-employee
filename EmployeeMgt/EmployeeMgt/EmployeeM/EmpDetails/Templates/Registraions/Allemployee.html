@@ -1,0 +1,46 @@
+{% extends "Registraions/base.html" %}
+{% block content %}
+<script type="text/javascript" src='http://code.jquery.com/jquery-1.9.0.js'></script>
+<script type="text/javascript">
+$(function(){
+  $('button').click(function(){
+      var url='data:application/vnd.ms-excel,' + encodeURIComponent($('#tableWrap').html());
+      location.href=url;
+      return false;
+  })
+})
+</script>
+
+<p><h1>List of all Employee where user can add,view,update and download employee informations.</h1>
+(click on employee id to update it)</p>
+
+<button><b>Download Employee Details</b></button>
+    <div id="tableWrap">
+<div class="centerstage">
+  <table style="width:100%">
+    <tr>
+    <td>EMP Id</td>
+    <th>Name</th>
+    <th>DOB</th>
+    <th>EmailId</th>
+    <th>Dateofjoining</th>
+    <th>Phonenumber</th>
+    <th>Gender</th>
+  </tr>
+
+    {% for post in EmpDetailsModel_list %}
+    <tr>
+    <td><h1><a href="{% url 'update' pk=post.pk %}">{{post.EmployeeId}}</a></h1></td>
+    <td>{{post.FullName}}</td>
+    <td>{{post.DOB}}</td>
+    <td>{{post.EmailId}}</td>
+    <td>{{post.Dateofjoining}}</td>
+    <td>{{post.Phonenumber}}</td>
+    <td>{{post.Gender}}</td>
+    </tr>
+
+    {% endfor %}
+    </table>
+</div>
+</div>
+{% endblock %}

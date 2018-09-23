@@ -1,0 +1,13 @@
+{% extends "Registraions/base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<h1>Employee Mangement Portal</h1>
+<form class="post-form" method="POST">
+  {% csrf_token %}
+{{form.as_p}}
+    <button type="submit" class="registerbtn">Update Employee Details</button>
+  </div>
+</form>
+<script type="text/javascript">
+</script>
+{% endblock %}
